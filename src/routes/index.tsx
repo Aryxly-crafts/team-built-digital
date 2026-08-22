@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
+import { QuoteForm } from "@/components/QuoteForm";
+import { trackCta, trackEvent } from "@/lib/analytics";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,6 +23,32 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "/" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "Arylxy",
+          description:
+            "Full-stack web development, admin dashboards, WhatsApp and Telegram automation and SEO for small businesses.",
+          email: "aryxly@gmail.com",
+          areaServed: ["Telangana", "Andhra Pradesh"],
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Hyderabad",
+            addressRegion: "Telangana",
+            addressCountry: "IN",
+          },
+          founder: [
+            { "@type": "Person", name: "Akshith" },
+            { "@type": "Person", name: "Yashashwini" },
+          ],
+        }),
+      },
     ],
   }),
   component: Index,
@@ -90,7 +118,7 @@ const process = [
 function NavLinks({ onClick }: { onClick?: () => void }) {
   return (
     <>
-      {["Services", "Work", "Pricing"].map((l) => (
+      {["Services", "Work", "Pricing", "Quote"].map((l) => (
         <a
           key={l}
           href={`#${l.toLowerCase()}`}
@@ -117,7 +145,8 @@ function Index() {
             <NavLinks />
           </nav>
           <a
-            href={MAILTO}
+            href="#quote"
+            onClick={() => trackEvent("Quote Nav Click")}
             className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-panel transition-all hover:-translate-y-0.5 hover:shadow-lift"
           >
             Get a quote
@@ -143,6 +172,7 @@ function Index() {
               <div className="mt-9 flex flex-wrap gap-3">
                 <a
                   href={MAILTO}
+                  onClick={() => trackCta("email", "hero")}
                   className="rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-panel transition-all hover:-translate-y-0.5 hover:shadow-lift"
                 >
                   Email us
@@ -339,7 +369,7 @@ function Index() {
             <Reveal delay={120}>
               <p className="mt-5 text-sm text-muted-foreground">
                 These are starting points — final quotes depend on scope.{" "}
-                <a href={MAILTO} className="border-b border-accent pb-0.5 font-medium text-foreground transition-colors hover:text-accent">
+                <a href={MAILTO} onClick={() => trackCta("email", "pricing")} className="border-b border-accent pb-0.5 font-medium text-foreground transition-colors hover:text-accent">
                   Email us
                 </a>{" "}
                 and we'll work it out together.
@@ -389,6 +419,38 @@ function Index() {
           </div>
         </section>
 
+        {/* Quote form */}
+        <section id="quote" className="scroll-mt-16 border-b border-border bg-surface">
+          <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-[1fr_1fr] lg:items-start">
+            <Reveal>
+              <p className="label-mono">Get a quote</p>
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+                Four questions and we can price it.
+              </h2>
+              <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
+                Tell us who you are, what kind of business you run, roughly what you want to
+                spend and when you need it live. We reply with a real number and what it
+                includes — no sales calls.
+              </p>
+              <ul className="mt-8 space-y-3">
+                {[
+                  "Reply within one working day",
+                  "Fixed scope, fixed price before we start",
+                  "You talk to the people writing the code",
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={90} className="rounded-2xl border border-border bg-background p-6 shadow-panel sm:p-8">
+              <QuoteForm />
+            </Reveal>
+          </div>
+        </section>
+
         {/* Contact */}
         <section className="bg-primary text-primary-foreground">
           <div className="mx-auto max-w-6xl px-5 py-20 text-center">
@@ -400,6 +462,7 @@ function Index() {
               </p>
               <a
                 href={MAILTO}
+                onClick={() => trackCta("email", "contact")}
                 className="mt-9 inline-block rounded-md bg-accent px-8 py-4 font-mono text-sm font-semibold text-accent-foreground transition-all hover:-translate-y-0.5 hover:shadow-lift"
               >
                 {EMAIL}
@@ -423,6 +486,7 @@ function Index() {
             <NavLinks />
             <a
               href={MAILTO}
+              onClick={() => trackCta("email", "footer")}
               className="text-sm font-medium transition-colors hover:text-accent"
             >
               {EMAIL}
