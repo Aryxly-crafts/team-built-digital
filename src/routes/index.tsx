@@ -132,10 +132,7 @@ function Index() {
             <Reveal>
               <p className="label-mono">Hyderabad · Web development studio</p>
               <h1 className="mt-5 text-4xl leading-[1.05] font-bold sm:text-5xl lg:text-6xl">
-                One team builds your
-                <br />
-                site, your backend
-                <br />
+                One team builds your site, your backend{" "}
                 <span className="text-accent">and everything behind it.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
