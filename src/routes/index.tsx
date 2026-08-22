@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { QuoteForm } from "@/components/QuoteForm";
-import { trackCta } from "@/lib/analytics";
+import { trackCta, trackEvent } from "@/lib/analytics";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -145,8 +145,8 @@ function Index() {
             <NavLinks />
           </nav>
           <a
-            href={MAILTO}
-            onClick={() => trackCta("email", "nav")}
+            href="#quote"
+            onClick={() => trackEvent("Quote Nav Click")}
             className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-panel transition-all hover:-translate-y-0.5 hover:shadow-lift"
           >
             Get a quote
