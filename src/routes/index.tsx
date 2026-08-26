@@ -321,14 +321,14 @@ function Index() {
         </section>
 
         {/* Work */}
-        <section id="work" className="scroll-mt-20 border-b border-border bg-surface">
+        <section id="work" className="scroll-mt-20 border-b border-border bg-secondary/40">
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
             <Reveal>
               <p className="label-mono">Selected work</p>
               <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl">Real businesses, real systems.</h2>
             </Reveal>
             <div className="mt-16 grid gap-8 lg:grid-cols-2">
-              <Reveal className="rounded-sm border border-border p-8 transition-all hover:border-primary hover:shadow-lift bg-background">
+              <Reveal className="rounded-md border border-border bg-background p-8 transition-all hover:border-primary hover:shadow-lift">
                 <p className="label-mono">Nalgonda · Car dealership</p>
                 <h3 className="mt-4 text-2xl sm:text-3xl">Markandaya Car Bazaar</h3>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -340,7 +340,7 @@ function Index() {
                   {["Full-stack", "Admin Dashboard", "SEO foundation"].map((t) => (
                     <li
                       key={t}
-                      className="rounded border border-border bg-muted px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
+                      className="rounded border border-primary/30 bg-secondary px-2.5 py-1 font-mono text-[11px] font-medium text-highlight"
                     >
                       {t}
                     </li>
@@ -358,7 +358,7 @@ function Index() {
 
               <Reveal
                 delay={90}
-                className="rounded-sm border border-border p-8 transition-all hover:border-primary hover:shadow-lift bg-background"
+                className="rounded-md border border-border bg-background p-8 transition-all hover:border-primary hover:shadow-lift"
               >
                 <p className="label-mono">Hyderabad · Event videography</p>
                 <h3 className="mt-4 text-2xl sm:text-3xl">Vyvi Media</h3>
@@ -371,7 +371,7 @@ function Index() {
                   {["Website Redesign", "Brand"].map((t) => (
                     <li
                       key={t}
-                      className="rounded border border-border bg-muted px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
+                      className="rounded border border-primary/30 bg-secondary px-2.5 py-1 font-mono text-[11px] font-medium text-highlight"
                     >
                       {t}
                     </li>
@@ -408,7 +408,7 @@ function Index() {
                       <td className="hidden px-6 py-5 text-sm text-background/70 sm:table-cell">
                         {s.desc}
                       </td>
-                      <td className="px-6 py-5 text-right font-mono text-sm font-semibold whitespace-nowrap">
+                      <td className="px-6 py-5 text-right font-mono text-sm font-semibold whitespace-nowrap text-accent">
                         {s.price}
                       </td>
                     </tr>
@@ -429,7 +429,7 @@ function Index() {
         </section>
 
         {/* Process */}
-        <section className="border-b border-border bg-surface">
+        <section className="border-b border-border bg-background">
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
             <Reveal>
               <p className="label-mono">Process</p>
@@ -470,7 +470,7 @@ function Index() {
         </section>
 
         {/* Quote form */}
-        <section id="quote" className="scroll-mt-20 border-b border-border bg-surface">
+        <section id="quote" className="scroll-mt-20 border-b border-border bg-secondary/40">
           <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:py-32 lg:grid-cols-[1fr_1fr] lg:items-start">
             <Reveal>
               <p className="label-mono">Get a quote</p>
@@ -513,7 +513,7 @@ function Index() {
               <a
                 href={MAILTO}
                 onClick={() => trackCta("email", "contact")}
-                className="mt-10 inline-block rounded-sm bg-primary px-10 py-4 font-mono text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-lift"
+                className="mt-10 inline-block rounded-md bg-background px-10 py-4 font-mono text-sm font-semibold text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 {EMAIL}
               </a>
@@ -522,12 +522,10 @@ function Index() {
         </section>
       </main>
 
-      <footer className="border-t border-border bg-surface">
+      <footer className="border-t border-border bg-secondary/40">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-display text-xl text-foreground">
-              Arylxy
-            </p>
+            <img src={fullLogo.url} alt="Arylxy" className="h-16 w-auto" width={400} height={400} />
             <p className="mt-1 font-mono text-xs text-muted-foreground">
               Hyderabad, India
             </p>
