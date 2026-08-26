@@ -49,7 +49,7 @@ function validate(v: Fields) {
 }
 
 const fieldClass =
-  "w-full rounded-sm border border-border bg-surface px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted-foreground/70 hover:border-primary/60 focus:border-primary focus:ring-1 focus:ring-primary";
+  "w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted-foreground/70 hover:border-primary/60 focus:border-primary focus:ring-1 focus:ring-primary";
 
 export function QuoteForm() {
   const [values, setValues] = useState<Fields>(empty);
@@ -163,7 +163,7 @@ export function QuoteForm() {
 
       <button
         type="submit"
-        className="w-full rounded-sm bg-primary px-6 py-3.5 font-mono text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-lift"
+        className="w-full rounded-md bg-foreground px-6 py-3.5 font-mono text-sm font-semibold text-background transition-colors hover:bg-primary"
       >
         Send quote request
       </button>
