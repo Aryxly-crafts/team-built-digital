@@ -141,10 +141,23 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       {/* Nav */}
-      <header className="sticky top-0 z-50 border-b border-border bg-surface/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
         <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
-          <a href="#top" className="font-display text-2xl text-foreground tracking-tight">
-            Arylxy
+          <a href="#top" className="flex items-center" aria-label="Arylxy — home">
+            <img
+              src={markLogo.url}
+              alt="Arylxy logo"
+              className="h-9 w-auto sm:hidden"
+              width={249}
+              height={256}
+            />
+            <img
+              src={fullLogo.url}
+              alt="Arylxy"
+              className="hidden h-14 w-auto sm:block"
+              width={400}
+              height={400}
+            />
           </a>
           <nav className="hidden items-center gap-10 sm:flex">
             <NavLinks />
@@ -152,7 +165,7 @@ function Index() {
           <a
             href="#quote"
             onClick={() => trackEvent("Quote Nav Click")}
-            className="rounded-sm bg-foreground px-6 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-primary"
+            className="rounded-md bg-foreground px-6 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-primary"
           >
             Get a quote
           </a>
