@@ -176,15 +176,18 @@ function Index() {
 
       <main id="top">
         {/* Hero */}
-        <section className="border-b border-border bg-surface">
+        <section className="border-b border-border bg-background">
           <div className="mx-auto max-w-6xl px-6 pt-16 pb-12 md:pt-24 md:pb-20 text-center">
             <Reveal>
               <p className="label-mono">Hyderabad · Web development studio</p>
-              <h1 className="mt-6 text-5xl leading-[1.05] font-display sm:text-6xl md:text-7xl lg:text-8xl">
-                One team builds your site, your backend{" "}
-                <span className="text-primary italic font-normal">and everything behind it.</span>
+              <h1 className="mt-6 text-4xl leading-[1.08] font-display font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
+                One team.{" "}
+                <span className="text-primary">Your entire digital system.</span>
               </h1>
-              <p className="mt-8 mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              <p className="mt-6 mx-auto max-w-2xl font-mono text-xs tracking-widest uppercase text-muted-foreground sm:text-sm">
+                Frontend · Backend · Admin Dashboard · Automation · SEO
+              </p>
+              <p className="mt-8 mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Most agencies stitch together freelancers — one for design, one for code, one
                 who disappears. Arylxy is two people who build the whole thing: the website,
                 the admin dashboard, the automation and the SEO. No hand-offs, no middlemen.
@@ -193,13 +196,13 @@ function Index() {
                 <a
                   href={MAILTO}
                   onClick={() => trackCta("email", "hero")}
-                  className="rounded-sm bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-lift"
+                  className="rounded-md bg-foreground px-8 py-3.5 text-sm font-semibold text-background transition-colors hover:bg-primary"
                 >
                   Email us
                 </a>
                 <a
                   href="#work"
-                  className="rounded-sm border border-border bg-surface px-8 py-3.5 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
+                  className="rounded-md border border-border bg-background px-8 py-3.5 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
                 >
                   See our work
                 </a>
@@ -208,35 +211,59 @@ function Index() {
 
             {/* Browser mockup */}
             <Reveal delay={120} className="relative mt-16 md:mt-20">
-              <div className="relative mx-auto max-w-5xl rounded-xl border border-border bg-surface shadow-2xl overflow-hidden">
-                <div className="h-10 bg-muted border-b border-border flex items-center px-4 gap-2">
-                  <span className="h-3 w-3 rounded-full bg-border" />
-                  <span className="h-3 w-3 rounded-full bg-border" />
-                  <span className="h-3 w-3 rounded-full bg-border" />
-                  <span className="ml-3 truncate rounded bg-surface px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+              <div className="relative mx-auto max-w-5xl overflow-hidden rounded-lg border border-border bg-background shadow-panel">
+                <div className="flex h-10 items-center gap-2 border-b border-border bg-muted px-4">
+                  <span className="h-2.5 w-2.5 rounded-full bg-border" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-border" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-border" />
+                  <span className="ml-3 truncate rounded bg-background px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
                     markandeya-car-bazar.vercel.app
                   </span>
                 </div>
-                <div className="relative p-6 md:p-8">
-                  {/* Admin dashboard panel floating behind */}
-                  <div className="absolute top-4 right-4 w-[55%] rounded-lg border border-border bg-background p-4 shadow-panel hidden md:block">
+                <div className="relative p-6 text-left md:p-8">
+                  {/* Admin dashboard panel */}
+                  <div className="absolute top-6 right-6 hidden w-[52%] rounded-md border border-border bg-background p-4 shadow-panel md:block">
                     <p className="label-mono">Admin Dashboard</p>
                     <div className="mt-3 grid grid-cols-3 gap-2">
                       {["Cars", "Leads", "Visits"].map((k, i) => (
-                        <div key={k} className="rounded border border-border bg-surface p-2">
+                        <div key={k} className="rounded border border-border bg-secondary/60 p-2">
                           <p className="font-mono text-[10px] text-muted-foreground">{k}</p>
-                          <p className="font-mono text-sm font-semibold">
+                          <p className="font-mono text-sm font-semibold text-foreground">
                             {[42, 17, 318][i]}
                           </p>
                         </div>
                       ))}
                     </div>
+                    <div className="mt-3 space-y-2">
+                      {["Swift Dzire · 2019", "Creta SX · 2021"].map((r) => (
+                        <div
+                          key={r}
+                          className="flex items-center justify-between rounded border border-border px-2 py-1.5"
+                        >
+                          <span className="font-mono text-[10px] text-muted-foreground">{r}</span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="h-32 rounded bg-primary/90 md:h-40" />
+                  <div className="flex h-32 flex-col justify-center rounded border border-border bg-foreground px-5 md:h-40 md:w-[46%]">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-primary">
+                      Markandaya Car Bazaar
+                    </p>
+                    <p className="mt-2 font-display text-lg font-semibold text-background md:text-xl">
+                      Certified used cars in Nalgonda
+                    </p>
+                    <span className="mt-3 w-fit rounded bg-primary px-3 py-1 font-mono text-[10px] font-semibold text-primary-foreground">
+                      Browse stock
+                    </span>
+                  </div>
                   <div className="mt-4 grid grid-cols-3 gap-3">
-                    <div className="h-16 rounded bg-muted" />
-                    <div className="h-16 rounded bg-muted" />
-                    <div className="h-16 rounded bg-muted" />
+                    {["₹4.2L", "₹6.8L", "₹9.5L"].map((p) => (
+                      <div key={p} className="rounded border border-border p-3">
+                        <div className="h-8 rounded bg-muted" />
+                        <p className="mt-2 font-mono text-[10px] font-semibold text-primary">{p}</p>
+                      </div>
+                    ))}
                   </div>
                   <div className="mt-4 h-2 w-2/3 rounded bg-muted" />
                   <div className="mt-2 h-2 w-1/2 rounded bg-muted" />
