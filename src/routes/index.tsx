@@ -274,13 +274,13 @@ function Index() {
         </section>
 
         {/* Proof strip */}
-        <section className="border-y border-border bg-surface">
+        <section className="border-y border-border bg-secondary/50">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-px px-6 sm:grid-cols-2 lg:grid-cols-4">
             {proof.map((p, i) => (
               <Reveal
                 key={p}
                 delay={i * 70}
-                className="border-border/20 py-6 sm:border-l sm:first:border-l-0 sm:pl-6 lg:pl-8"
+                className="border-border py-6 sm:border-l sm:first:border-l-0 sm:pl-6 lg:pl-8"
               >
                 <p className="font-mono text-xs tracking-wide text-muted-foreground">{p}</p>
               </Reveal>
@@ -297,20 +297,23 @@ function Index() {
                 Everything a small business needs online, built in-house.
               </h2>
             </Reveal>
-            <div className="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((s, i) => (
                 <Reveal
                   key={s.name}
                   delay={i * 60}
-                  className="group space-y-4"
+                  className="group flex flex-col rounded-md border border-border bg-background p-7 transition-colors hover:border-primary"
                 >
-                  <div className={`h-1 w-12 ${s.bar} mb-6`} />
-                  <span className="font-mono text-xs font-semibold text-muted-foreground">0{i + 1}</span>
-                  <h3 className="text-2xl sm:text-3xl">{s.name}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-mono text-xs font-semibold text-primary">
+                    0{i + 1}
+                  </span>
+                  <h3 className="mt-4 text-xl sm:text-2xl">{s.name}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {s.desc}
                   </p>
-                  <p className="font-mono text-sm font-semibold text-primary">{s.price}</p>
+                  <p className="mt-6 border-t border-border pt-4 font-mono text-sm font-semibold text-primary">
+                    {s.price}
+                  </p>
                 </Reveal>
               ))}
             </div>
