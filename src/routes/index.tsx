@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { QuoteForm } from "@/components/QuoteForm";
 import { trackCta, trackEvent } from "@/lib/analytics";
+import fullLogo from "@/assets/arylxy-logo-full.png.asset.json";
+import markLogo from "@/assets/arylxy-mark.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
