@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { QuoteForm } from "@/components/QuoteForm";
 import { trackCta, trackEvent } from "@/lib/analytics";
+import fullLogo from "@/assets/arylxy-logo-full.png.asset.json";
+import markLogo from "@/assets/arylxy-mark.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -141,10 +143,23 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       {/* Nav */}
-      <header className="sticky top-0 z-50 border-b border-border bg-surface/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
         <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
-          <a href="#top" className="font-display text-2xl text-foreground tracking-tight">
-            Arylxy
+          <a href="#top" className="flex items-center" aria-label="Arylxy — home">
+            <img
+              src={markLogo.url}
+              alt="Arylxy logo"
+              className="h-9 w-auto sm:hidden"
+              width={249}
+              height={256}
+            />
+            <img
+              src={fullLogo.url}
+              alt="Arylxy"
+              className="hidden h-14 w-auto sm:block"
+              width={400}
+              height={400}
+            />
           </a>
           <nav className="hidden items-center gap-10 sm:flex">
             <NavLinks />
@@ -152,7 +167,7 @@ function Index() {
           <a
             href="#quote"
             onClick={() => trackEvent("Quote Nav Click")}
-            className="rounded-sm bg-foreground px-6 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-primary"
+            className="rounded-md bg-foreground px-6 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-primary"
           >
             Get a quote
           </a>
@@ -161,15 +176,18 @@ function Index() {
 
       <main id="top">
         {/* Hero */}
-        <section className="border-b border-border bg-surface">
+        <section className="border-b border-border bg-background">
           <div className="mx-auto max-w-6xl px-6 pt-16 pb-12 md:pt-24 md:pb-20 text-center">
             <Reveal>
               <p className="label-mono">Hyderabad · Web development studio</p>
-              <h1 className="mt-6 text-5xl leading-[1.05] font-display sm:text-6xl md:text-7xl lg:text-8xl">
-                One team builds your site, your backend{" "}
-                <span className="text-primary italic font-normal">and everything behind it.</span>
+              <h1 className="mt-6 text-4xl leading-[1.08] font-display font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
+                One team.{" "}
+                <span className="text-primary">Your entire digital system.</span>
               </h1>
-              <p className="mt-8 mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              <p className="mt-6 mx-auto max-w-2xl font-mono text-xs tracking-widest uppercase text-muted-foreground sm:text-sm">
+                Frontend · Backend · Admin Dashboard · Automation · SEO
+              </p>
+              <p className="mt-8 mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Most agencies stitch together freelancers — one for design, one for code, one
                 who disappears. Arylxy is two people who build the whole thing: the website,
                 the admin dashboard, the automation and the SEO. No hand-offs, no middlemen.
@@ -178,13 +196,13 @@ function Index() {
                 <a
                   href={MAILTO}
                   onClick={() => trackCta("email", "hero")}
-                  className="rounded-sm bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-lift"
+                  className="rounded-md bg-foreground px-8 py-3.5 text-sm font-semibold text-background transition-colors hover:bg-primary"
                 >
                   Email us
                 </a>
                 <a
                   href="#work"
-                  className="rounded-sm border border-border bg-surface px-8 py-3.5 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
+                  className="rounded-md border border-border bg-background px-8 py-3.5 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
                 >
                   See our work
                 </a>
@@ -193,35 +211,59 @@ function Index() {
 
             {/* Browser mockup */}
             <Reveal delay={120} className="relative mt-16 md:mt-20">
-              <div className="relative mx-auto max-w-5xl rounded-xl border border-border bg-surface shadow-2xl overflow-hidden">
-                <div className="h-10 bg-muted border-b border-border flex items-center px-4 gap-2">
-                  <span className="h-3 w-3 rounded-full bg-border" />
-                  <span className="h-3 w-3 rounded-full bg-border" />
-                  <span className="h-3 w-3 rounded-full bg-border" />
-                  <span className="ml-3 truncate rounded bg-surface px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+              <div className="relative mx-auto max-w-5xl overflow-hidden rounded-lg border border-border bg-background shadow-panel">
+                <div className="flex h-10 items-center gap-2 border-b border-border bg-muted px-4">
+                  <span className="h-2.5 w-2.5 rounded-full bg-border" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-border" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-border" />
+                  <span className="ml-3 truncate rounded bg-background px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
                     markandeya-car-bazar.vercel.app
                   </span>
                 </div>
-                <div className="relative p-6 md:p-8">
-                  {/* Admin dashboard panel floating behind */}
-                  <div className="absolute top-4 right-4 w-[55%] rounded-lg border border-border bg-background p-4 shadow-panel hidden md:block">
+                <div className="relative p-6 text-left md:p-8">
+                  {/* Admin dashboard panel */}
+                  <div className="absolute top-6 right-6 hidden w-[52%] rounded-md border border-border bg-background p-4 shadow-panel md:block">
                     <p className="label-mono">Admin Dashboard</p>
                     <div className="mt-3 grid grid-cols-3 gap-2">
                       {["Cars", "Leads", "Visits"].map((k, i) => (
-                        <div key={k} className="rounded border border-border bg-surface p-2">
+                        <div key={k} className="rounded border border-border bg-secondary/60 p-2">
                           <p className="font-mono text-[10px] text-muted-foreground">{k}</p>
-                          <p className="font-mono text-sm font-semibold">
+                          <p className="font-mono text-sm font-semibold text-foreground">
                             {[42, 17, 318][i]}
                           </p>
                         </div>
                       ))}
                     </div>
+                    <div className="mt-3 space-y-2">
+                      {["Swift Dzire · 2019", "Creta SX · 2021"].map((r) => (
+                        <div
+                          key={r}
+                          className="flex items-center justify-between rounded border border-border px-2 py-1.5"
+                        >
+                          <span className="font-mono text-[10px] text-muted-foreground">{r}</span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="h-32 rounded bg-primary/90 md:h-40" />
+                  <div className="flex h-32 flex-col justify-center rounded border border-border bg-foreground px-5 md:h-40 md:w-[46%]">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-primary">
+                      Markandaya Car Bazaar
+                    </p>
+                    <p className="mt-2 font-display text-lg font-semibold text-background md:text-xl">
+                      Certified used cars in Nalgonda
+                    </p>
+                    <span className="mt-3 w-fit rounded bg-primary px-3 py-1 font-mono text-[10px] font-semibold text-primary-foreground">
+                      Browse stock
+                    </span>
+                  </div>
                   <div className="mt-4 grid grid-cols-3 gap-3">
-                    <div className="h-16 rounded bg-muted" />
-                    <div className="h-16 rounded bg-muted" />
-                    <div className="h-16 rounded bg-muted" />
+                    {["₹4.2L", "₹6.8L", "₹9.5L"].map((p) => (
+                      <div key={p} className="rounded border border-border p-3">
+                        <div className="h-8 rounded bg-muted" />
+                        <p className="mt-2 font-mono text-[10px] font-semibold text-primary">{p}</p>
+                      </div>
+                    ))}
                   </div>
                   <div className="mt-4 h-2 w-2/3 rounded bg-muted" />
                   <div className="mt-2 h-2 w-1/2 rounded bg-muted" />
@@ -232,13 +274,13 @@ function Index() {
         </section>
 
         {/* Proof strip */}
-        <section className="border-y border-border bg-surface">
+        <section className="border-y border-border bg-secondary/50">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-px px-6 sm:grid-cols-2 lg:grid-cols-4">
             {proof.map((p, i) => (
               <Reveal
                 key={p}
                 delay={i * 70}
-                className="border-border/20 py-6 sm:border-l sm:first:border-l-0 sm:pl-6 lg:pl-8"
+                className="border-border py-6 sm:border-l sm:first:border-l-0 sm:pl-6 lg:pl-8"
               >
                 <p className="font-mono text-xs tracking-wide text-muted-foreground">{p}</p>
               </Reveal>
@@ -255,20 +297,23 @@ function Index() {
                 Everything a small business needs online, built in-house.
               </h2>
             </Reveal>
-            <div className="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((s, i) => (
                 <Reveal
                   key={s.name}
                   delay={i * 60}
-                  className="group space-y-4"
+                  className="group flex flex-col rounded-md border border-border bg-background p-7 transition-colors hover:border-primary"
                 >
-                  <div className={`h-1 w-12 ${s.bar} mb-6`} />
-                  <span className="font-mono text-xs font-semibold text-muted-foreground">0{i + 1}</span>
-                  <h3 className="text-2xl sm:text-3xl">{s.name}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-mono text-xs font-semibold text-primary">
+                    0{i + 1}
+                  </span>
+                  <h3 className="mt-4 text-xl sm:text-2xl">{s.name}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {s.desc}
                   </p>
-                  <p className="font-mono text-sm font-semibold text-primary">{s.price}</p>
+                  <p className="mt-6 border-t border-border pt-4 font-mono text-sm font-semibold text-primary">
+                    {s.price}
+                  </p>
                 </Reveal>
               ))}
             </div>
@@ -276,14 +321,14 @@ function Index() {
         </section>
 
         {/* Work */}
-        <section id="work" className="scroll-mt-20 border-b border-border bg-surface">
+        <section id="work" className="scroll-mt-20 border-b border-border bg-secondary/40">
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
             <Reveal>
               <p className="label-mono">Selected work</p>
               <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl">Real businesses, real systems.</h2>
             </Reveal>
             <div className="mt-16 grid gap-8 lg:grid-cols-2">
-              <Reveal className="rounded-sm border border-border p-8 transition-all hover:border-primary hover:shadow-lift bg-background">
+              <Reveal className="rounded-md border border-border bg-background p-8 transition-all hover:border-primary hover:shadow-lift">
                 <p className="label-mono">Nalgonda · Car dealership</p>
                 <h3 className="mt-4 text-2xl sm:text-3xl">Markandaya Car Bazaar</h3>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -295,7 +340,7 @@ function Index() {
                   {["Full-stack", "Admin Dashboard", "SEO foundation"].map((t) => (
                     <li
                       key={t}
-                      className="rounded border border-border bg-muted px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
+                      className="rounded border border-primary/30 bg-secondary px-2.5 py-1 font-mono text-[11px] font-medium text-highlight"
                     >
                       {t}
                     </li>
@@ -313,7 +358,7 @@ function Index() {
 
               <Reveal
                 delay={90}
-                className="rounded-sm border border-border p-8 transition-all hover:border-primary hover:shadow-lift bg-background"
+                className="rounded-md border border-border bg-background p-8 transition-all hover:border-primary hover:shadow-lift"
               >
                 <p className="label-mono">Hyderabad · Event videography</p>
                 <h3 className="mt-4 text-2xl sm:text-3xl">Vyvi Media</h3>
@@ -326,7 +371,7 @@ function Index() {
                   {["Website Redesign", "Brand"].map((t) => (
                     <li
                       key={t}
-                      className="rounded border border-border bg-muted px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
+                      className="rounded border border-primary/30 bg-secondary px-2.5 py-1 font-mono text-[11px] font-medium text-highlight"
                     >
                       {t}
                     </li>
@@ -363,7 +408,7 @@ function Index() {
                       <td className="hidden px-6 py-5 text-sm text-background/70 sm:table-cell">
                         {s.desc}
                       </td>
-                      <td className="px-6 py-5 text-right font-mono text-sm font-semibold whitespace-nowrap">
+                      <td className="px-6 py-5 text-right font-mono text-sm font-semibold whitespace-nowrap text-accent">
                         {s.price}
                       </td>
                     </tr>
@@ -384,7 +429,7 @@ function Index() {
         </section>
 
         {/* Process */}
-        <section className="border-b border-border bg-surface">
+        <section className="border-b border-border bg-background">
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
             <Reveal>
               <p className="label-mono">Process</p>
@@ -425,7 +470,7 @@ function Index() {
         </section>
 
         {/* Quote form */}
-        <section id="quote" className="scroll-mt-20 border-b border-border bg-surface">
+        <section id="quote" className="scroll-mt-20 border-b border-border bg-secondary/40">
           <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:py-32 lg:grid-cols-[1fr_1fr] lg:items-start">
             <Reveal>
               <p className="label-mono">Get a quote</p>
@@ -468,7 +513,7 @@ function Index() {
               <a
                 href={MAILTO}
                 onClick={() => trackCta("email", "contact")}
-                className="mt-10 inline-block rounded-sm bg-primary px-10 py-4 font-mono text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-lift"
+                className="mt-10 inline-block rounded-md bg-background px-10 py-4 font-mono text-sm font-semibold text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 {EMAIL}
               </a>
@@ -477,12 +522,10 @@ function Index() {
         </section>
       </main>
 
-      <footer className="border-t border-border bg-surface">
+      <footer className="border-t border-border bg-secondary/40">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-display text-xl text-foreground">
-              Arylxy
-            </p>
+            <img src={fullLogo.url} alt="Arylxy" className="h-16 w-auto" width={400} height={400} />
             <p className="mt-1 font-mono text-xs text-muted-foreground">
               Hyderabad, India
             </p>
