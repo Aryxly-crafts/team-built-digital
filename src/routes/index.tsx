@@ -121,7 +121,7 @@ const process = [
 function NavLinks({ onClick }: { onClick?: () => void }) {
   return (
     <>
-      {["Services", "Work", "Pricing", "Quote"].map((l) => (
+      {["Services", "Work", "Quote"].map((l) => (
         <a
           key={l}
           href={`#${l.toLowerCase()}`}
@@ -296,35 +296,62 @@ function Index() {
 
         {/* Services */}
         <section id="services" className="scroll-mt-20 border-b border-border">
-          <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <div className="mx-auto max-w-6xl px-6 py-28 md:py-40">
             <Reveal>
               <p className="label-mono">Services</p>
-              <h2 className="mt-3 max-w-2xl text-3xl sm:text-4xl md:text-5xl">
+              <h2 className="mt-4 max-w-2xl text-3xl sm:text-4xl md:text-5xl">
                 Everything a small business needs online, built in-house.
               </h2>
             </Reveal>
-            <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((s, i) => (
                 <Reveal
                   key={s.name}
                   delay={i * 60}
-                  className="group flex flex-col rounded-md border border-border bg-background p-7 transition-colors hover:border-primary"
+                  className="group flex flex-col rounded-md border border-border bg-background p-8 transition-all hover:border-primary/50 hover:shadow-lift"
                 >
-                  <span className="font-mono text-xs font-semibold text-primary">
-                    0{i + 1}
-                  </span>
-                  <h3 className="mt-4 text-xl sm:text-2xl">{s.name}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-mono text-xs font-semibold text-primary">0{i + 1}</span>
+                  <h3 className="mt-5 text-xl sm:text-2xl">{s.name}</h3>
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {s.desc}
                   </p>
-                  <p className="mt-6 border-t border-border pt-4 font-mono text-sm font-semibold text-primary">
-                    {s.price}
+                  <p className="mt-6 font-mono text-[11px] leading-relaxed tracking-wide text-highlight">
+                    {s.scope}
                   </p>
+                  <a
+                    href={MAILTO}
+                    onClick={() => trackCta("email", `service:${s.name}`)}
+                    className="mt-6 border-t border-border pt-5 text-sm font-medium transition-colors hover:text-primary"
+                  >
+                    Get a custom quote →
+                  </a>
                 </Reveal>
               ))}
             </div>
+
+            <Reveal
+              delay={120}
+              className="mt-8 flex flex-col gap-5 rounded-md border border-border bg-secondary/40 p-8 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div className="max-w-xl">
+                <p className="label-mono">Also available</p>
+                <h3 className="mt-3 text-xl">Branding &amp; Design</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Logos, brand basics and print work including restaurant menu design. Available
+                  on request — no published case study yet.
+                </p>
+              </div>
+              <a
+                href={MAILTO}
+                onClick={() => trackCta("email", "service:branding")}
+                className="shrink-0 text-sm font-medium transition-colors hover:text-primary"
+              >
+                Get a custom quote →
+              </a>
+            </Reveal>
           </div>
         </section>
+
 
         {/* Work */}
         <section id="work" className="scroll-mt-20 border-b border-border bg-secondary/40">
