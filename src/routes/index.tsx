@@ -62,30 +62,31 @@ const MAILTO = `mailto:${EMAIL}`;
 const services = [
   {
     name: "Website Development",
-    desc: "From a single landing page to a full site with its own admin dashboard for content, leads and inventory.",
-    price: "From ₹8,000",
+    desc: "From a single landing page up to a full site with its own admin dashboard for content, leads and inventory.",
+    scope: "Landing page → full site + dashboard",
   },
   {
     name: "WhatsApp Automation",
-    desc: "Auto-replies, lead capture and order updates, running on WhatsApp where your customers already are.",
-    price: "From ₹8,000",
+    desc: "Where your customers already are — auto-replies, lead capture and order updates that run without you.",
+    scope: "Basic auto-replies → order tracking & multi-flow",
   },
   {
     name: "Telegram Automation",
-    desc: "Bots for groups, notifications and community management — no per-message platform fees.",
-    price: "From ₹5,000",
+    desc: "Bots for notifications, groups and community management, with no per-message platform fees.",
+    scope: "Single notification bot → multi-group management",
   },
   {
     name: "Website Maintenance",
-    desc: "Security patches, backups and content updates, handled every month so nothing breaks quietly.",
-    price: "From ₹2,000/mo",
+    desc: "Security patches, backups and content updates handled every month so nothing breaks quietly.",
+    scope: "Patches & backups → monitoring + priority support",
   },
   {
     name: "SEO",
-    desc: "Keyword research, on-page fixes and monthly reporting so people actually find you on Google.",
-    price: "From ₹8,000/mo",
+    desc: "Keyword research, on-page fixes and reporting so people actually find you on Google.",
+    scope: "On-page fixes & reporting → content + off-page",
   },
 ];
+
 
 const proof = [
   "Full-stack: frontend to backend",
