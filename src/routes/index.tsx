@@ -64,31 +64,26 @@ const services = [
     name: "Website Development",
     desc: "From a single landing page to a full site with its own admin dashboard for content, leads and inventory.",
     price: "From ₹8,000",
-    bar: "bg-primary",
   },
   {
     name: "WhatsApp Automation",
     desc: "Auto-replies, lead capture and order updates, running on WhatsApp where your customers already are.",
     price: "From ₹8,000",
-    bar: "bg-highlight",
   },
   {
     name: "Telegram Automation",
     desc: "Bots for groups, notifications and community management — no per-message platform fees.",
     price: "From ₹5,000",
-    bar: "bg-accent",
   },
   {
     name: "Website Maintenance",
     desc: "Security patches, backups and content updates, handled every month so nothing breaks quietly.",
     price: "From ₹2,000/mo",
-    bar: "bg-primary/70",
   },
   {
     name: "SEO",
     desc: "Keyword research, on-page fixes and monthly reporting so people actually find you on Google.",
     price: "From ₹8,000/mo",
-    bar: "bg-highlight/70",
   },
 ];
 
@@ -176,8 +171,18 @@ function Index() {
 
       <main id="top">
         {/* Hero */}
-        <section className="border-b border-border bg-background">
-          <div className="mx-auto max-w-6xl px-6 pt-16 pb-12 md:pt-24 md:pb-20 text-center">
+        <section className="brand-hero relative overflow-hidden border-b border-border bg-background">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            <img
+              src={markLogo.url}
+              alt=""
+              className="absolute right-[-8rem] top-[-3rem] w-[30rem] max-w-none opacity-[0.055] sm:right-[-4rem] sm:w-[38rem] lg:right-[max(-2rem,calc((100vw-72rem)/2-10rem))] lg:top-[-7rem] lg:w-[48rem]"
+              width={249}
+              height={256}
+            />
+            <div className="absolute inset-x-0 bottom-0 h-px bg-primary/25" />
+          </div>
+          <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-12 text-center md:pt-24 md:pb-20">
             <Reveal>
               <p className="label-mono">Hyderabad · Web development studio</p>
               <h1 className="mt-6 text-4xl leading-[1.08] font-display font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
@@ -392,7 +397,7 @@ function Index() {
               <p className="label-mono text-background/50">Pricing</p>
               <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl">Starting prices, in plain numbers.</h2>
             </Reveal>
-            <Reveal delay={80} className="mt-12 overflow-hidden rounded-sm border border-background/10 bg-background/5">
+            <Reveal delay={80} className="mt-12 overflow-hidden rounded-md border border-background/10 bg-background/5">
               <table className="w-full text-left">
                 <thead>
                   <tr className="border-b border-background/10 bg-background/10">
@@ -495,7 +500,7 @@ function Index() {
                 ))}
               </ul>
             </Reveal>
-            <Reveal delay={90} className="rounded-sm border border-border bg-background p-8 shadow-panel">
+            <Reveal delay={90} className="rounded-md border border-border bg-background p-8 shadow-panel">
               <QuoteForm />
             </Reveal>
           </div>
