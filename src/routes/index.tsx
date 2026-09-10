@@ -355,21 +355,26 @@ function Index() {
 
         {/* Work */}
         <section id="work" className="scroll-mt-20 border-b border-border bg-secondary/40">
-          <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <div className="mx-auto max-w-6xl px-6 py-28 md:py-40">
             <Reveal>
               <p className="label-mono">Selected work</p>
-              <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl">Real businesses, real systems.</h2>
+              <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl">Real businesses, real systems.</h2>
             </Reveal>
-            <div className="mt-16 grid gap-8 lg:grid-cols-2">
-              <Reveal className="rounded-md border border-border bg-background p-8 transition-all hover:border-primary hover:shadow-lift">
-                <p className="label-mono">Nalgonda · Car dealership</p>
-                <h3 className="mt-4 text-2xl sm:text-3xl">Markandaya Car Bazaar</h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            <div className="mt-20 grid gap-8 lg:grid-cols-2">
+              <Reveal className="rounded-md border border-border bg-background p-10 transition-all hover:border-primary/50 hover:shadow-lift">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="label-mono">Nalgonda · Car dealership</p>
+                  <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-wide text-highlight">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" /> In progress
+                  </span>
+                </div>
+                <h3 className="mt-5 text-2xl sm:text-3xl">Markandaya Car Bazaar</h3>
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
                   A full website backed by its own admin panel — the team adds and edits car
                   listings, tracks incoming leads and watches daily visitor counts without
                   calling us.
                 </p>
-                <ul className="mt-6 flex flex-wrap gap-2">
+                <ul className="mt-8 flex flex-wrap gap-2">
                   {["Full-stack", "Admin Dashboard", "SEO foundation"].map((t) => (
                     <li
                       key={t}
@@ -379,28 +384,25 @@ function Index() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="https://markandeya-car-bazar.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-block border-b border-primary pb-0.5 text-sm font-medium transition-colors hover:text-primary"
-                >
-                  Visit the live site →
-                </a>
               </Reveal>
 
               <Reveal
                 delay={90}
-                className="rounded-md border border-border bg-background p-8 transition-all hover:border-primary hover:shadow-lift"
+                className="rounded-md border border-border bg-background p-10 transition-all hover:border-primary/50 hover:shadow-lift"
               >
-                <p className="label-mono">Hyderabad · Event videography</p>
-                <h3 className="mt-4 text-2xl sm:text-3xl">Vyvi Media</h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="label-mono">Hyderabad · Event videography</p>
+                  <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-wide text-highlight">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Completed
+                  </span>
+                </div>
+                <h3 className="mt-5 text-2xl sm:text-3xl">Vyvi Media</h3>
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
                   A website redesign for an event videography studio — a sharper, more visual
                   presentation of their reels and services so enquiries come from the work
                   itself.
                 </p>
-                <ul className="mt-6 flex flex-wrap gap-2">
+                <ul className="mt-8 flex flex-wrap gap-2">
                   {["Website Redesign", "Brand"].map((t) => (
                     <li
                       key={t}
@@ -410,56 +412,58 @@ function Index() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-8 inline-flex items-center gap-2 font-mono text-xs text-primary">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" /> In progress
-                </p>
+                <a
+                  href="https://www.vyvimedia.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent("Case Study Link", { project: "Vyvi Media" })}
+                  className="mt-8 inline-block border-b border-primary pb-0.5 text-sm font-medium transition-colors hover:text-primary"
+                >
+                  Visit the live site →
+                </a>
               </Reveal>
             </div>
           </div>
         </section>
 
-        {/* Pricing */}
+        {/* How we scope */}
         <section id="pricing" className="scroll-mt-20 bg-foreground text-background">
-          <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <div className="mx-auto max-w-6xl px-6 py-28 md:py-40">
             <Reveal>
-              <p className="label-mono text-background/50">Pricing</p>
-              <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl">Starting prices, in plain numbers.</h2>
+              <p className="label-mono text-background/50">Scope</p>
+              <h2 className="mt-4 max-w-2xl text-3xl sm:text-4xl md:text-5xl">
+                Every project is quoted on scope, not a price list.
+              </h2>
             </Reveal>
-            <Reveal delay={80} className="mt-12 overflow-hidden rounded-md border border-background/10 bg-background/5">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="border-b border-background/10 bg-background/10">
-                    <th className="label-mono px-6 py-4 text-background/60">Service</th>
-                    <th className="label-mono hidden px-6 py-4 text-background/60 sm:table-cell">What it covers</th>
-                    <th className="label-mono px-6 py-4 text-right text-background/60">Starting at</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {services.map((s) => (
-                    <tr key={s.name} className="border-b border-background/10 last:border-0 transition-colors hover:bg-background/5">
-                      <td className="px-6 py-5 text-sm font-semibold">{s.name}</td>
-                      <td className="hidden px-6 py-5 text-sm text-background/70 sm:table-cell">
-                        {s.desc}
-                      </td>
-                      <td className="px-6 py-5 text-right font-mono text-sm font-semibold whitespace-nowrap text-accent">
-                        {s.price}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <Reveal delay={80} className="mt-16 divide-y divide-background/10 border-y border-background/10">
+              {services.map((s) => (
+                <div
+                  key={s.name}
+                  className="grid gap-3 py-7 transition-colors hover:bg-background/5 sm:grid-cols-[1fr_1.2fr] sm:items-baseline sm:gap-8"
+                >
+                  <p className="text-base font-semibold">{s.name}</p>
+                  <p className="font-mono text-xs leading-relaxed tracking-wide text-background/60">
+                    {s.scope}
+                  </p>
+                </div>
+              ))}
             </Reveal>
             <Reveal delay={120}>
-              <p className="mt-6 text-sm text-background/60">
-                These are starting points — final quotes depend on scope.{" "}
-                <a href={MAILTO} onClick={() => trackCta("email", "pricing")} className="border-b border-primary pb-0.5 font-medium text-background transition-colors hover:text-primary">
-                  Email us
-                </a>{" "}
-                and we'll work it out together.
+              <p className="mt-10 max-w-xl text-sm leading-relaxed text-background/60">
+                Tell us where you sit on that range and we'll send back a fixed quote with
+                exactly what's included.{" "}
+                <a
+                  href={MAILTO}
+                  onClick={() => trackCta("email", "scope")}
+                  className="border-b border-primary pb-0.5 font-medium text-background transition-colors hover:text-primary"
+                >
+                  Get a custom quote
+                </a>
               </p>
             </Reveal>
           </div>
         </section>
+
 
         {/* Process */}
         <section className="border-b border-border bg-background">
